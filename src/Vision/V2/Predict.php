@@ -23,5 +23,4 @@ final class Predict extends \RestbSDK\RestbAiVisionAPISDK
     {
         return self::client()->resource(\RestbSDK\Resources\Vision\V2\Predict::class)->post($params);
     }
-
 }

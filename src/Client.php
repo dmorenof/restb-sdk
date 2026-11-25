@@ -8,13 +8,13 @@ class Client extends \Dmorenof\SdkRuntime\ApiClient
 {
     protected const array SECURITY_SCHEMES = [];
     protected const array SERVERS = [
-    [
-        'url' => 'https://api-us.restb.ai',
-    ],
-    [
-        'url' => 'https://api-eu.restb.ai',
-    ],
-];
+        [
+            'url' => 'https://api-us.restb.ai',
+        ],
+        [
+            'url' => 'https://api-eu.restb.ai',
+        ],
+    ];
 
     private static ?self $currentConnection = null;
 

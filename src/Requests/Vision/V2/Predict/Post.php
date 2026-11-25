@@ -7,9 +7,9 @@ namespace RestbSDK\Requests\Vision\V2\Predict;
 final class Post extends \Dmorenof\SdkRuntime\DTO
 {
     public const array REQUIRED_FIELDS = [
-    'image_base64',
-    'model_id',
-];
+        'image_base64',
+        'model_id',
+    ];
 
     /**
      * URL-safe base64 of the image (the public samples mark this for development only)

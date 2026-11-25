@@ -7,16 +7,16 @@ namespace RestbSDK\PostParams\Vision\V2;
 final class Predict extends \Dmorenof\SdkRuntime\DTO
 {
     public const array REQUIRED_FIELDS = [
-    'client_key',
-    'body',
-];
+        'client_key',
+        'body',
+    ];
     public const array OPERATION_FIELDS = [
-    'path' => [],
-    'query' => [
-        'client_key' => 'client_key',
-    ],
-    'header' => [],
-];
+        'path' => [],
+        'query' => [
+            'client_key' => 'client_key',
+        ],
+        'header' => [],
+    ];
 
     public const bool OPERATION_BODY = true;
 

@@ -23,5 +23,4 @@ final class Multipredict extends \RestbSDK\RestbAiVisionAPISDK
     {
         return self::client()->resource(\RestbSDK\Resources\Vision\V2\Multipredict::class)->post($params);
     }
-
 }
