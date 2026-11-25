@@ -1,0 +1,234 @@
+{
+ "openapi": "3.0.3",
+ "info": {
+  "title": "Restb.ai Vision API",
+  "version": "2.0.0",
+  "description": "Restb.ai computer vision for real estate photos (room type, features, condition, compliance...). Reconstructed from the sample code of Restb.ai's own public SDK (https://github.com/restbai/sdk, Apache-2.0): the endpoints, the hosts and the parameters. Restb.ai keeps its API documentation (https://docs.restb.ai/) behind a client login, so the models and their answers are not described here."
+ },
+ "servers": [
+  {
+   "url": "https://api-us.restb.ai",
+   "description": "United States"
+  },
+  {
+   "url": "https://api-eu.restb.ai",
+   "description": "Europe"
+  }
+ ],
+ "paths": {
+  "/vision/v2/predict": {
+   "get": {
+    "operationId": "predictByUrl",
+    "summary": "Run one model on an image (image by URL)",
+    "tags": [
+     "Vision"
+    ],
+    "parameters": [
+     {
+      "name": "client_key",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Your client key"
+     },
+     {
+      "name": "model_id",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "description": "Comma-separated list of models for multipredict (the public SDK samples use re_roomtype_global_v2, re_exterior_styles, re_features_v4, re_logo, re_compliance_v2, re_condition_r1r6_global)"
+      }
+     },
+     {
+      "name": "image_url",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "format": "uri"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "The predictions of the models. Restb.ai documents the answer only to its customers: it is free-form JSON here.",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "additionalProperties": true
+        }
+       }
+      }
+     }
+    }
+   },
+   "post": {
+    "operationId": "predictByImage",
+    "summary": "Run one model on an image (image as base64 in the body)",
+    "tags": [
+     "Vision"
+    ],
+    "parameters": [
+     {
+      "name": "client_key",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Your client key"
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/x-www-form-urlencoded": {
+       "schema": {
+        "type": "object",
+        "properties": {
+         "model_id": {
+          "type": "string",
+          "description": "Comma-separated list of models for multipredict (the public SDK samples use re_roomtype_global_v2, re_exterior_styles, re_features_v4, re_logo, re_compliance_v2, re_condition_r1r6_global)"
+         },
+         "image_base64": {
+          "type": "string",
+          "description": "URL-safe base64 of the image (the public samples mark this for development only)"
+         }
+        },
+        "additionalProperties": false,
+        "required": [
+         "model_id",
+         "image_base64"
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "The predictions of the models. Restb.ai documents the answer only to its customers: it is free-form JSON here.",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "additionalProperties": true
+        }
+       }
+      }
+     }
+    }
+   }
+  },
+  "/vision/v2/multipredict": {
+   "get": {
+    "operationId": "multipredictByUrl",
+    "summary": "Run several models on an image (image by URL)",
+    "tags": [
+     "Vision"
+    ],
+    "parameters": [
+     {
+      "name": "client_key",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Your client key"
+     },
+     {
+      "name": "model_id",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "description": "Comma-separated list of models for multipredict (the public SDK samples use re_roomtype_global_v2, re_exterior_styles, re_features_v4, re_logo, re_compliance_v2, re_condition_r1r6_global)"
+      }
+     },
+     {
+      "name": "image_url",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string",
+       "format": "uri"
+      }
+     }
+    ],
+    "responses": {
+     "200": {
+      "description": "The predictions of the models. Restb.ai documents the answer only to its customers: it is free-form JSON here.",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "additionalProperties": true
+        }
+       }
+      }
+     }
+    }
+   },
+   "post": {
+    "operationId": "multipredictByImage",
+    "summary": "Run several models on an image (image as base64 in the body)",
+    "tags": [
+     "Vision"
+    ],
+    "parameters": [
+     {
+      "name": "client_key",
+      "in": "query",
+      "required": true,
+      "schema": {
+       "type": "string"
+      },
+      "description": "Your client key"
+     }
+    ],
+    "requestBody": {
+     "required": true,
+     "content": {
+      "application/x-www-form-urlencoded": {
+       "schema": {
+        "type": "object",
+        "properties": {
+         "model_id": {
+          "type": "string",
+          "description": "Comma-separated list of models for multipredict (the public SDK samples use re_roomtype_global_v2, re_exterior_styles, re_features_v4, re_logo, re_compliance_v2, re_condition_r1r6_global)"
+         },
+         "image_base64": {
+          "type": "string",
+          "description": "URL-safe base64 of the image (the public samples mark this for development only)"
+         }
+        },
+        "additionalProperties": false,
+        "required": [
+         "model_id",
+         "image_base64"
+        ]
+       }
+      }
+     }
+    },
+    "responses": {
+     "200": {
+      "description": "The predictions of the models. Restb.ai documents the answer only to its customers: it is free-form JSON here.",
+      "content": {
+       "application/json": {
+        "schema": {
+         "type": "object",
+         "additionalProperties": true
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+ }
+}
